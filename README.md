@@ -44,4 +44,56 @@ Nosso objetivo é aplicar conceitos fundamentais de **herança, encapsulamento, 
 ---
 
 ## 🧱 Estrutura de Classes (Exemplo Simplificado)  
+Produto
+├── Prato
+├── Bebida
+└── Sobremesa
+Cliente
+Pedido
+Restaurante
+└── Estoque
+├── Alimentos
+└── Materiais
+Delivery
+Presencial
+
+
+---
+
+## 🧑‍💻 Tecnologias Utilizadas  
+- 🐍 **Python 3.12+**  
+- ⚙️ **Programação Orientada a Objetos (POO)**  
+- 🧪 **Testes Unitários (opcional)**  
+- 📚 **Boas práticas de documentação e modularização**
+
+---
+
+## 🚀 Objetivo Acadêmico  
+
+Este projeto foi desenvolvido para fins educacionais, com foco em demonstrar o uso avançado dos conceitos de **POO em Python**, aplicados em um **sistema de gestão realista e criativo**.  
+A cada semana, novas funcionalidades são implementadas e avaliadas, tornando o código cada vez mais robusto e escalável.
+
+---
+
+## 🍕 Equipe de Desenvolvimento  
+
+👨‍💻 **Integrantes:**  
+- Guilherme Silva Souza
+- Gustavo Freitas Sampaio
+- Hellyel Roges dos Passos Ambrozio Pereira 
+
+📅 **Curso:** Ciência da Computação – Universidade Católica de Santos  
+📘 **Disciplina:** Programação Orientada a Objetos  
+
+---
+
+## 💬 Contato  
+
+📧 helleyl.pereira.dev@gmail.com (exemplo)  
+💡 Projeto acadêmico open-source – contribuições são bem-vindas!  
+
+---
+
+⭐ **Dê uma estrela se gostou do projeto!**  
+> Feito com dedicação, lógica e um toque de molho italiano 🍅
 
