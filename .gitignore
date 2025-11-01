@@ -1,0 +1,26 @@
+# Ambiente virtual
+venv/
+ENV/
+env/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pdb
+*.egg-info/
+*.egg
+
+# VS Code
+.vscode/
+
+# MacOS
+.DS_Store
+
+# Logs e arquivos temporários
+*.log
+*.tmp
+
+# Arquivos de banco local (opcional)
+*.sqlite3
