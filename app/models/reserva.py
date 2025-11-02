@@ -44,6 +44,7 @@ class Reserva_Mesa():
         except:
             print("Mesa não reservada ainda.")
         if self.horario_de_entrada-self.horario_de_saida>=datetime.timedelta(0) or int(self.horario_de_entrada.hour)<=int(self.abertura.hour) or int(self.horario_de_saida.hour)>=int(self.fechamento.hour) or self.horario_de_entrada.day-self.horario_de_saida.day<0:
+            
             print("Arrume o horário")
             return -1
         try:
