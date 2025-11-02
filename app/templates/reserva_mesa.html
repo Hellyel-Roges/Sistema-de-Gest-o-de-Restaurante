@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+
+    <!-- Bootstrap CSS local -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">La Forchetta 🍝</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/reserva_mesa">Reserva</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Cardápio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Delivery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Contato</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Faça sua reserva 🍝</h1>
+
+        <!-- Mensagem -->
+        <div id="mensagem" class="alert d-none"></div>
+
+        <!-- Formulário de reserva -->
+        <form id="form-reserva">
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome:</label>
+                <input type="text" class="form-control" id="nome" placeholder="Seu nome" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="mesa" class="form-label">Número da Mesa:</label>
+                <select id="mesa" class="form-select">
+                    {% for i in range(1, 11) %}
+                    <option value="{{ i }}">Mesa {{ i }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="data" class="form-label">Data:</label>
+                <input type="date" class="form-control" id="data" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="horario_entrada" class="form-label">Horário de Entrada (11h às 23h):</label>
+                <input type="time" class="form-control" id="horario_entrada">
+            </div>
+
+            <div class="mb-3">
+                <label for="horario_saida" class="form-label">Horário de Saída (11h às 23h):</label>
+                <input type="time" class="form-control" id="horario_saida">
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Reservar Mesa</button>
+        </form>
+
+        <!-- Lista de reservas -->
+        <h3 class="mt-5">Reservas realizadas:</h3>
+        <ul id="lista-reservas" class="list-group"></ul>
+    </div>
+
+    <!-- jQuery e Bootstrap -->
+    <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/reserva_mesa.js') }}"></script>
+
+</body>
+</html>
