@@ -29,6 +29,8 @@ class Reserva_Mesa():
         self.tem_veiculo=1 if self.cliente.veiculo is not None else 0
         self.path='mesas'
         self.mesas=[]
+        self.abertura=datetime.datetime.strptime('11','%H')
+        self.fechamento=datetime.datetime.strptime('23','%H')
     
     def reservar_mesa(self):
         try:
@@ -41,12 +43,14 @@ class Reserva_Mesa():
             self.mesas[self.numero_mesa]
         except:
             print("Mesa não reservada ainda.")
-        print(self.mesas)
+        if self.horario_de_entrada-self.horario_de_saida>=datetime.timedelta(0) or int(self.horario_de_entrada.hour)<=int(self.abertura.hour) or int(self.horario_de_saida.hour)>=int(self.fechamento.hour):
+            print("Arrume o horário")
+            return -1
         try:
             for i in range(0,len(self.mesas[self.numero_mesa-1]),2):
-                if self.horario_de_saida>self.mesas[self.numero_mesa-1][i] and self.horario_de_saida<=self.mesas[self.numero_mesa-1][i+1]:
+                if self.horario_de_saida>=self.mesas[self.numero_mesa-1][i] and self.horario_de_saida<=self.mesas[self.numero_mesa-1][i+1]:
                     raise Exception("Não pode reservar essa mesa nesse dia e horário.")
-                if self.horario_de_entrada>self.mesas[self.numero_mesa-1][i] and self.horario_de_entrada<=self.mesas[self.numero_mesa-1][i+1]:
+                if self.horario_de_entrada>=self.mesas[self.numero_mesa-1][i] and self.horario_de_entrada<=self.mesas[self.numero_mesa-1][i+1]:
                     raise Exception("Não pode reservar essa mesa nesse dia e horário.")
         except Exception as e:
             print(e)
