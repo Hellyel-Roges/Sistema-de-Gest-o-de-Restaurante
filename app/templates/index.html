@@ -1,18 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
 
-    <!-- Bootstrap CSS local -->
     <link rel="stylesheet" href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}">
-    <!-- Codigo CSS 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">-->
 </head>
-<body>
 
-    <!-- Navbar -->
+<body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">La Forchetta 🍝</a>
@@ -22,8 +19,8 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Cardápio</a></li>
                     <li class="nav-item"><a class="nav-link" href="/reserva_mesa">Reserva</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Cardápio</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Delivery</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Contato</a></li>
                 </ul>
@@ -31,19 +28,18 @@
         </div>
     </nav>
 
-    <!-- Conteúdo principal -->
     <div class="container mt-5">
         <h1 class="text-center mb-4">🍝 Bem-vindo ao La Forchetta!</h1>
         <p class="text-center">O melhor restaurante de massas, delivery e experiência presencial.</p>
 
-        <!-- Cardápio exemplo -->
         <div class="row" id="cardapio">
             <div class="col-md-4 mb-3">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Lasanha - R$ 35,00</h5>
                         <p class="card-text">Deliciosa lasanha com molho especial.</p>
-                        <button class="btn btn-primary adicionar-pedido" data-produto="Lasanha" data-preco="35.0">Adicionar ao pedido</button>
+                        <button class="btn btn-primary adicionar-pedido" data-produto="Lasanha"
+                            data-preco="35.0">Adicionar ao pedido</button>
                     </div>
                 </div>
             </div>
@@ -52,23 +48,40 @@
                     <div class="card-body">
                         <h5 class="card-title">Espaguete - R$ 30,00</h5>
                         <p class="card-text">Clássico espaguete com molho de tomate fresco.</p>
-                        <button class="btn btn-primary adicionar-pedido" data-produto="Espaguete" data-preco="30.0">Adicionar ao pedido</button>
+                        <button class="btn btn-primary adicionar-pedido" data-produto="Espaguete"
+                            data-preco="30.0">Adicionar ao pedido</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Pedido -->
+        <div id="mensagem-pagamento" class="mt-3"></div>
+        
         <h3 class="mt-4">Seu pedido:</h3>
         <ul id="lista-pedido"></ul>
         <p>Total: R$ <span id="total">0.00</span></p>
+
+        <!-- Seção de pagamento -->
+        <div class="mt-4">
+            <h4>Forma de Pagamento</h4>
+            <div class="mt-3">
+                <label for="metodo-pagamento" class="form-label">Método de pagamento:</label>
+                <select id="metodo-pagamento" class="form-select">
+                    <option disabled selected>Selecione</option>
+                    <option>Pix</option>
+                    <option>Cartão de crédito/débito</option>
+                    <option>Dinheiro</option>
+                </select>
+            </div>
+
+            <button id="btn-pagar" class="btn btn-success mt-3">Finalizar Pagamento</button>
+
+        </div>
     </div>
 
-    <!-- jQuery local -->
     <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
-    <!-- Bootstrap JS local -->
     <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <!-- Codigo JS -->
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/pagamento.js') }}"></script>
 </body>
+
 </html>
