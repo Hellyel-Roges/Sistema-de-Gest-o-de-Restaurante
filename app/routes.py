@@ -1,6 +1,6 @@
 from flask import render_template, request, jsonify
 from app import app
-from app.models.reserva import Cliente, Reserva_Mesa
+from app.models import Pagamento, Reserva_Mesa, Cliente
 import datetime
 import pickle as pkl
 import os
@@ -79,3 +79,27 @@ def api_post_reserva():
 
     except Exception as e:
         return jsonify({"status": "erro", "mensagem": f"Erro ao criar reserva: {e}"})
+    
+
+
+# Rota para a conexão do front com back com o pagamento
+@app.route("/api/pagamento", methods=["POST"])
+def processar_pagamento():
+    try:
+        dados = request.get_json()
+        valor_total = float(dados.get("valor_total", 0))
+        metodo = dados.get("metodo")
+
+        if valor_total <= 0:
+            return jsonify({"status": "erro", "mensagem": "Valor inválido para pagamento."})
+
+        if metodo not in ["Pix", "Cartão de crédito/débito", "Dinheiro"]:
+            return jsonify({"status": "erro", "mensagem": "Método de pagamento inválido."})
+
+        pagamento = Pagamento(valor_total, metodo)
+        resultado = pagamento.processar_pagamento()
+
+        return jsonify(resultado)
+
+    except Exception as e:
+        return jsonify({"status": "erro", "mensagem": str(e)})
