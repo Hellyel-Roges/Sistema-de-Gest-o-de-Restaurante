@@ -7,7 +7,7 @@
 
 ## 🧩 Sobre o Projeto  
 
-**La Forchetta** é um sistema desenvolvido em **Python** com foco em **Programação Orientada a Objetos (POO)**.  
+**La Forchetta** é um sistema desenvolvido em **Python** com foco em **Programação Orientada a Objetos (POO) e no Desenvolvimento Front-end(IHC)**.  
 O projeto simula o funcionamento completo de um restaurante especializado em **massas italianas**, integrando tanto o **atendimento presencial** quanto o **serviço de delivery**.
 
 Nosso objetivo é aplicar conceitos fundamentais de **herança, encapsulamento, polimorfismo e abstração**, criando uma arquitetura organizada e expansível.
@@ -44,18 +44,18 @@ Nosso objetivo é aplicar conceitos fundamentais de **herança, encapsulamento, 
 ---
 
 ## 🧱 Estrutura de Classes (Exemplo Simplificado)  
-Produto
-├── Prato
-├── Bebida
-└── Sobremesa
-Cliente
-Pedido
-Restaurante
-└── Estoque
-├── Alimentos
-└── Materiais
-Delivery
-Presencial
+-Produto
+-├── Prato
+-├── Bebida
+-└── Sobremesa
+-Cliente
+-Pedido
+-Restaurante
+-└── Estoque
+-├── Alimentos
+-└── Materiais
+-Delivery
+-Presencial
 
 
 ---
@@ -63,7 +63,7 @@ Presencial
 ## 🧑‍💻 Tecnologias Utilizadas  
 - 🐍 **Python 3.12+**  
 - ⚙️ **Programação Orientada a Objetos (POO)**  
-- 🧪 **Testes Unitários (opcional)**  
+- 🧪 **Testes Unitários**  
 - 📚 **Boas práticas de documentação e modularização**
 
 ---
@@ -83,13 +83,13 @@ A cada semana, novas funcionalidades são implementadas e avaliadas, tornando o 
 - Hellyel Roges dos Passos Ambrozio Pereira 
 
 📅 **Curso:** Ciência da Computação – Universidade Católica de Santos  
-📘 **Disciplina:** Programação Orientada a Objetos  
+📘 **Disciplina:** Programação Orientada a Objetos + Interação Homem Computador
 
 ---
 
 ## 💬 Contato  
 
-📧 helleyl.pereira.dev@gmail.com (exemplo)  
+📧 helleyl.pereira.dev@gmail.com
 💡 Projeto acadêmico open-source – contribuições são bem-vindas!  
 
 ---
