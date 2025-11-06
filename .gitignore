@@ -24,3 +24,6 @@ __pycache__/
 
 # Arquivos de banco local (opcional)
 *.sqlite3
+/instance/
+
+
