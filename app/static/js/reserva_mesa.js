@@ -44,6 +44,11 @@ $(document).ready(function() {
             return;
         }
 
+        if (!mesa) {
+            mostrarMensagem("Selecione Uma Mesa!!!", 'warning');
+            return;
+        }
+
         $.ajax({
             url: "/api/reservas",
             type: "POST",

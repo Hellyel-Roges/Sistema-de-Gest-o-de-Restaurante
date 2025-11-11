@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}">
+
+        <!-- Style CSS-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">La Forchetta 🍝</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/reserva_mesa">Reserva</a></li>
+                <li class="nav-item"><a class="nav-link active" href="/delivery">Delivery</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Cardápio</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Contato</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-5">
+
+    <h1 class="text-center mb-4">🛵 Delivery</h1>
+
+    <div id="mensagem"></div>
+
+    <div class="row" id="produtos"></div>
+
+    <h3 class="mt-4">Carrinho</h3>
+    <ul id="lista-pedido"></ul>
+    <p>Total: R$ <span id="total">0.00</span></p>
+
+    <div class="mt-4">
+        <h4>Forma de Pagamento</h4>
+        <select id="metodo" class="form-select w-50">
+            <option disabled selected>Selecione</option>
+            <option value="pix">Pix</option>
+            <option value="cartao">Cartão</option>
+            <option value="dinheiro">Dinheiro</option>
+        </select>
+
+        <button id="btn-finalizar" class="btn btn-success mt-3">Finalizar Pedido</button>
+    </div>
+
+</div>
+
+    <br>
+    <footer class="text-center py-4 bg-dark text-light mt-auto">
+        © {{ year }} La Forchetta - Todos os direitos reservados.
+    </footer>
+<script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/delivery.js') }}"></script>
+
+</body>
+</html>

@@ -7,8 +7,11 @@
 
     <!-- Bootstrap CSS local -->
     <link rel="stylesheet" href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}">
+
+    <!-- Style CSS-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -21,8 +24,8 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
                     <li class="nav-item"><a class="nav-link active" href="/reserva_mesa">Reserva</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/delivery">Delivery</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Cardápio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Delivery</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Contato</a></li>
                 </ul>
             </div>
@@ -41,10 +44,15 @@
                 <label for="nome" class="form-label">Nome:</label>
                 <input type="text" class="form-control" id="nome" placeholder="Seu nome" required>
             </div>
+            <div class="mb-3">
+                <label for="nome" class="form-label">CPF:</label>
+                <input type="text" class="form-control" id="nome" placeholder="Seu CPF" required>
+            </div>
 
             <div class="mb-3">
                 <label for="mesa" class="form-label">Número da Mesa:</label>
                 <select id="mesa" class="form-select">
+                    <option disabled selected>Selecione</option>
                     {% for i in range(1, 11) %}
                     <option value="{{ i }}">Mesa {{ i }}</option>
                     {% endfor %}
@@ -73,6 +81,10 @@
         <h3 class="mt-5">Reservas realizadas:</h3>
         <ul id="lista-reservas" class="list-group"></ul>
     </div>
+    <br>
+    <footer class="text-center py-4 bg-dark text-light mt-auto">
+        © {{ year }} La Forchetta - Todos os direitos reservados.
+    </footer>
 
     <!-- jQuery e Bootstrap -->
     <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
