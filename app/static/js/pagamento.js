@@ -1,76 +1,89 @@
 $(document).ready(function () {
-    let total = 0;
-    let pedido = {};
+    let pedidoId = null;
+    
+    // Iniciar pedido
+    $("#iniciar-pedido").click(function () {
+        const cpf = $("#cpf").val().trim();
 
-   // Adicionar produtos ao carrinho pois o chefe nao quer homepage meu
-    $('.adicionar-pedido').click(function () {
-        const produto = $(this).data('produto');
-        const preco = parseFloat($(this).data('preco'));
-
-        if (pedido[produto]) {
-            pedido[produto].quantidade += 1;
-        } else {
-            pedido[produto] = { preco: preco, quantidade: 1 };
+        if (!cpf) {
+            alert("Digite seu CPF.");
+            return;
         }
 
-        total += preco;
-        $('#total').text(total.toFixed(2));
-        atualizarLista();
+        $.ajax({
+            url: "/api/pedido",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({ cpf: cpf }),
+            success: function (response) {
+                if (response.status === "ok") {
+                    pedidoId = response.pedido_id;
+                    $("#cpf").prop("disabled", true);
+                    $("#iniciar-pedido").hide();
+                    alert("Pedido iniciado com sucesso!");
+                } else {
+                    alert(response.mensagem);
+                }
+            }
+        });
     });
 
-    // Atualiza sa merda de lista de pedidos (Gustavo ou Guilherme nao mecha se nao vai quebra)
-    function atualizarLista() {
-        $('#lista-pedido').empty();
-        for (const item in pedido) {
-            $('#lista-pedido').append(
-                `<li>${item} - R$ ${pedido[item].preco.toFixed(2)} (${pedido[item].quantidade}x)</li>`
-            );
+    // Adicionar produto ao pedido
+    $(".adicionar-pedido").click(function () {
+        if (!pedidoId) {
+            alert("Digite o CPF e clique em iniciar pedido primeiro.");
+            return;
         }
+
+        let produtoId = $(this).data("produto-id");
+
+        $.ajax({
+            url: `/api/pedido/${pedidoId}/item`,
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({ produto_id: produtoId }),
+            success: function () {
+                atualizarTotal();
+            }
+        });
+    });
+
+    // Atualizar valor total
+    function atualizarTotal() {
+        $.ajax({
+            url: `/api/pedido/${pedidoId}/total`,
+            type: "GET",
+            success: function (response) {
+                $("#total").text(response.total.toFixed(2));
+            }
+        });
     }
 
-    // Finalizar pagamento fedelho
-    $('#btn-pagar').click(function () {
-        const metodo = $('#metodo-pagamento').val();
-        $('#mensagem-pagamento').empty();
-
-        if (total <= 0) {
-            $('#mensagem-pagamento').html('<div class="alert alert-danger">Seu carrinho está vazio.</div>');
+    // Finalizar pagamento
+    $("#btn-pagar").click(function () {
+        if (!pedidoId) {
+            alert("Nenhum pedido iniciado.");
             return;
         }
+
+        const metodo = $("#metodo-pagamento").val();
 
         if (!metodo) {
-            $('#mensagem-pagamento').html('<div class="alert alert-warning">Selecione um método de pagamento.</div>');
+            alert("Selecione uma forma de pagamento.");
             return;
         }
 
-    // Requisisão ajax jogando no peito do rota flask para jogar de cabeça pra classe
         $.ajax({
-            url: '/api/pagamento',
-            type: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify({
-                valor_total: total,
-                metodo: metodo
-            }),
+            url: `/api/pedido/${pedidoId}/pagar`,
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({ forma_pagamento: metodo }),
             success: function (response) {
-                if (response.status === 'ok') {
-                    $('#mensagem-pagamento').html(
-                        `<div class="alert alert-success">${response.mensagem}</div>`
-                    );
-                    total = 0;
-                    pedido = {};
-                    atualizarLista();
-                    $('#total').text("0.00");
+                if (response.status === "ok") {
+                    alert("Pagamento iniciado. Confirme no painel do garçom ou caixa.");
                 } else {
-                    $('#mensagem-pagamento').html(
-                        `<div class="alert alert-danger">${response.mensagem}</div>`
-                    );
+                    alert(response.mensagem);
                 }
-            },
-            error: function () {
-                $('#mensagem-pagamento').html(
-                    '<div class="alert alert-danger">Erro ao processar pagamento.</div>'
-                );
             }
         });
     });
