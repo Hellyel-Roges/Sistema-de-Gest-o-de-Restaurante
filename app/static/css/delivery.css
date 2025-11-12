@@ -1,0 +1,181 @@
+/* === Base Theme (Copiado do home.css) === */
+:root {
+  --gold: #d4af37;
+  --gold-dark: #b88a00;
+  --bg: #0d0d0d;
+  --card-bg: #1a1a1a;
+  --muted: #cccccc;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--bg);
+  color: #f2f2f2;
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* === Navbar (Copiado do home.css) === */
+/* Isso garante que o navbar fique escuro */
+.navbar {
+  background-color: #0b0b0b;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid rgba(212,175,55,0.1);
+}
+.nav-link {
+  color: #e6e6e6 !important;
+  font-weight: 500;
+  transition: color 0.25s ease, transform 0.15s ease;
+}
+.nav-link:hover, .nav-link.active {
+  color: #ffb84d !important;
+  transform: translateY(-1px);
+}
+.text-gold { color: var(--gold); }
+
+/* === Botões (Copiado do home.css) === */
+.btn-gold {
+  background-color: var(--gold);
+  color: #000;
+  border: none;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+.btn-gold:hover {
+  background-color: var(--gold-dark);
+  color: #fff;
+}
+
+/* === Fade-in (Copiado do home.css) === */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =====================================================
+=== ESTILOS DA PÁGINA DE DELIVERY ===
+===================================================== */
+
+.content-section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+/* Card do Produto */
+.produto-card {
+  background-color: var(--card-bg);
+  border: 1px solid rgba(184,134,11,0.15);
+  border-radius: 12px;
+  color: #e6e6e6;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.produto-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(212,175,55,0.1);
+}
+.produto-card-img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 12px 12px 0 0;
+}
+.produto-card-body {
+  padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+.produto-card-title {
+  color: var(--gold);
+  font-weight: 600;
+}
+.produto-card-text {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.produto-card-price {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  margin-top: auto;
+  margin-bottom: 1rem;
+}
+
+/* Carrinho de Compras */
+.carrinho-container {
+  background-color: var(--card-bg);
+  border: 1px solid var(--gold);
+  border-radius: 12px;
+  padding: 2rem;
+  position: sticky; 
+  top: 100px;
+}
+
+/* Inputs e Selects */
+.form-control, .form-select {
+    background-color: #333;
+    color: #f8f9fa;
+    border-color: #555;
+}
+.form-control:focus, .form-select:focus {
+    background-color: #444;
+    color: #f8f9fa;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 0.25rem rgba(212, 175, 55, 0.25);
+}
+
+/* !!!! CORREÇÃO DO TEXTO CINZA/INVÍSIVEL !!!!
+  Isto força os itens da lista do carrinho a terem 
+  fundo transparente e texto branco.
+*/
+#lista-pedido .list-group-item {
+  background-color: transparent;
+  border-color: rgba(212, 175, 55, 0.3);
+  color: #f2f2f2 !important; /* Força o texto a ser branco */
+  padding: 0.75rem 0.25rem;
+}
+
+/* Isto faz o "carrinho vazio" ficar cinza,
+  mas os itens normais (de cima) ficam brancos.
+*/
+#lista-pedido .list-group-item.text-muted {
+    color: #888 !important;
+}
+
+/* Total do Carrinho */
+.total-carrinho {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  border-top: 1px solid rgba(212, 175, 55, 0.3);
+  padding-top: 1rem;
+  margin-top: 1rem;
+}
+
+/* Mensagens de Alerta (Sucesso/Erro) */
+#mensagem .alert {
+    color: #f2f2f2;
+    border-width: 2px;
+    margin-top: 1rem;
+}
+#mensagem .alert-success {
+    background-color: #1a4a3a;
+    border-color: #2a8a6a;
+    color: #a0e0c8;
+}
+#mensagem .alert-danger {
+    background-color: #4a1a1a;
+    border-color: #a82a2a;
+    color: #e0a0a0;
+}

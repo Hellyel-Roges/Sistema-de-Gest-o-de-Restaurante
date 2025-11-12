@@ -5,23 +5,45 @@ $(document).ready(function () {
 
     // -------------------- UTIL --------------------
     function mostrarMensagem(texto, tipo = "success") {
+        // Sua função original. Vai funcionar com o CSS novo.
         $("#mensagem")
-            .html(`<div class="alert alert-${tipo}">${texto}</div>`);
-        setTimeout(() => $("#mensagem").html(""), 3000);
+            .html(`<div class="alert alert-${tipo} alert-dismissible fade show" role="alert">
+                      ${texto}
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                   </div>`);
     }
 
     function atualizarCarrinho() {
         let html = "";
         let total = 0;
 
-        for (let id in carrinho) {
-            let item = carrinho[id];
-            total += item.preco * item.qtd;
-            html += `
-                <li>
-                    ${item.nome} (x${item.qtd}) - R$ ${(item.preco * item.qtd).toFixed(2)}
-                    <button class="btn btn-sm btn-danger btn-remover" data-id="${id}">X</button>
+        if (Object.keys(carrinho).length === 0) {
+            // Usa a classe 'text-muted' que o CSS vai estilizar
+            html = '<li class="list-group-item text-muted">Seu carrinho está vazio.</li>';
+        } else {
+            for (let id in carrinho) {
+                let item = carrinho[id];
+                total += item.preco * item.qtd;
+
+                // !!!! MUDANÇA AQUI (CORRIGE O TEXTO CINZA) !!!!
+                // Este é o novo HTML para o item do carrinho
+                html += `
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div>
+                        <strong class="text-gold">${item.nome}</strong>
+                        <small class="d-block text-light"> 
+                            R$ ${item.preco.toFixed(2)} x ${item.qtd}
+                        </small>
+                    </div>
+                    <div>
+                        <span class="fw-bold me-3 text-light">R$ ${(item.preco * item.qtd).toFixed(2)}</span>
+                        
+                        <button class="btn btn-sm btn-outline-danger btn-remover" data-id="${id}">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </div>
                 </li>`;
+            }
         }
 
         $("#lista-pedido").html(html);
@@ -35,21 +57,33 @@ $(document).ready(function () {
         success: function (produtos) {
             let html = "";
             produtos.forEach(p => {
+                
+                // !!!! MUDANÇA AQUI (DEIXA O CARD BONITO) !!!!
+                // Este é o novo HTML para o card do produto
                 html += `
-                <div class="col-md-4 mb-4">
-                    <div class="card p-3 shadow">
-                        <h4>${p.nome}</h4>
-                        <p>${p.descricao}</p>
-                        <b>R$ ${p.preco.toFixed(2)}</b>
-                        <button class="btn btn-primary btn-add mt-2" data-id="${p.id}" data-nome="${p.nome}" data-preco="${p.preco}">
-                            Adicionar
-                        </button>
+                <div class="col-md-6 mb-4">
+                    <div class="produto-card">
+                        <img src="${p.imagem || '/static/img/prato_massa.png'}" class="produto-card-img" alt="${p.nome}">
+                        <div class="produto-card-body">
+                            <h5 class="produto-card-title">${p.nome}</h5>
+                            <p class="produto-card-text">${p.descricao || 'Descrição não disponível.'}</p>
+                            <p class="produto-card-price">R$ ${p.preco.toFixed(2)}</p>
+
+                            <button class="btn btn-gold w-100 btn-add" data-id="${p.id}" data-nome="${p.nome}" data-preco="${p.preco}">
+                                Adicionar <i class="bi bi-plus-lg"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>`;
             });
             $("#produtos").html(html);
         }
     });
+
+    // ----------------------------------------------------
+    // O RESTO DO SEU ARQUIVO (LÓGICA DE API)
+    // NÃO MUDA NADA DAQUI PARA BAIXO
+    // ----------------------------------------------------
 
     // -------------------- CRIAR PEDIDO AUTOMATICAMENTE AO ADICIONAR ITEM --------------------
     function criarPedidoSeNaoExistir(callback) {
@@ -66,6 +100,9 @@ $(document).ready(function () {
                 pedidoId = res.id;
                 mostrarMensagem("Pedido iniciado.");
                 callback();
+            },
+            error: function() {
+                mostrarMensagem("Erro ao criar pedido. Tente novamente.", "danger");
             }
         });
     }
@@ -86,6 +123,9 @@ $(document).ready(function () {
                     if (!carrinho[id]) carrinho[id] = { nome, preco, qtd: 0 };
                     carrinho[id].qtd++;
                     atualizarCarrinho();
+                },
+                error: function() {
+                    mostrarMensagem("Erro ao adicionar item.", "danger");
                 }
             });
         });
@@ -104,14 +144,17 @@ $(document).ready(function () {
                 carrinho[id].qtd--;
                 if (carrinho[id].qtd <= 0) delete carrinho[id];
                 atualizarCarrinho();
+            },
+            error: function() {
+                mostrarMensagem("Erro ao remover item.", "danger");
             }
         });
     });
 
     // -------------------- FINALIZAR E PAGAR --------------------
     $("#btn-finalizar").click(function () {
-        if (!pedidoId) {
-            mostrarMensagem("Você não adicionou itens!", "danger");
+        if (!pedidoId || Object.keys(carrinho).length === 0) {
+            mostrarMensagem("Seu carrinho está vazio!", "danger");
             return;
         }
 
@@ -131,6 +174,11 @@ $(document).ready(function () {
                 carrinho = {};
                 pedidoId = null;
                 atualizarCarrinho();
+                $("#metodo").val(""); // Limpa o select
+            },
+            error: function(jqXHR) {
+                let erro = jqXHR.responseJSON ? jqXHR.responseJSON.mensagem : "Erro ao finalizar pagamento.";
+                mostrarMensagem(erro, "danger");
             }
         });
     });

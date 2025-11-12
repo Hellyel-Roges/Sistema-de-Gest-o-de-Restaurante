@@ -1,0 +1,126 @@
+/* === Base Theme (Copiado do home.css) === */
+:root {
+  --gold: #d4af37;
+  --gold-dark: #b88a00;
+  --bg: #0d0d0d;
+  --card-bg: #1a1a1a;
+  --muted: #cccccc;
+}
+
+html { scroll-behavior: smooth; }
+
+/* Define o fundo escuro e a cor da fonte, como no home.css */
+body {
+  background-color: var(--bg);
+  color: #f2f2f2;
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* === Navbar (Copiado do home.css) === */
+/* Isso vai consertar seu navbar branco */
+.navbar {
+  background-color: #0b0b0b;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid rgba(212,175,55,0.1);
+}
+.nav-link {
+  color: #e6e6e6 !important;
+  font-weight: 500;
+  transition: color 0.25s ease, transform 0.15s ease;
+}
+.nav-link:hover, .nav-link.active {
+  color: #ffb84d !important;
+  transform: translateY(-1px);
+}
+.text-gold { color: var(--gold); }
+
+/* === Botões (Copiado do home.css) === */
+.btn-gold {
+  background-color: var(--gold);
+  color: #000;
+  border: none;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+.btn-gold:hover {
+  background-color: var(--gold-dark);
+  color: #fff;
+}
+.btn-outline-light:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+/* === Fade-in (Copiado do home.css) === */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === ESTILOS ESPECÍFICOS DA PÁGINA DE RESERVA === */
+
+/* Espaçamento do conteúdo */
+.content-section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+/* Containers do formulário e lista */
+.form-reserva-container, .lista-reservas-container {
+    background-color: var(--card-bg); /* #1a1a1a */
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid var(--gold); /* #d4af37 */
+}
+
+/* Inputs (campos de texto, data, hora) e Selects (mesas) */
+/* Isso vai consertar os inputs pretos/brancos */
+.form-control, .form-select {
+    background-color: #333;    /* Fundo escuro para os campos */
+    color: #f8f9fa;           /* Texto claro dentro dos campos */
+    border-color: #555;        /* Borda dos campos */
+}
+.form-control:focus, .form-select:focus {
+    background-color: #444;
+    color: #f8f9fa;
+    border-color: var(--gold); /* Borda dourada ao focar */
+    box-shadow: 0 0 0 0.25rem rgba(212, 175, 55, 0.25);
+}
+
+/* Texto "placeholder" (ex: "Seu nome") */
+.form-control::placeholder {
+    color: #999;
+}
+
+/* Cor dos ícones de data e hora */
+.form-control[type="date"]::-webkit-calendar-picker-indicator,
+.form-control[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.8); /* Deixa o ícone claro */
+}
+
+/* Corrige o fundo branco do "autofill" do Chrome */
+.form-control:-webkit-autofill,
+.form-control:-webkit-autofill:hover, 
+.form-control:-webkit-autofill:focus, 
+.form-control:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 30px #333 inset !important;
+    -webkit-text-fill-color: #f8f9fa !important;
+}
+
+/* Lista de Reservas */
+.lista-reservas-container {
+    margin-top: 3rem;
+}
+#lista-reservas .list-group-item {
+    background-color: transparent;
+    border-color: rgba(212, 175, 55, 0.3);
+    color: #f2f2f2;
+}

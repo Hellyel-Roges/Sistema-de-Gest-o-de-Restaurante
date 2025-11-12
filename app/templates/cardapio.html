@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block styles %}
+    <!-- 1. Carrega o novo CSS do cardápio -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cardapio.css') }}">
+    
+    <!-- 2. Adiciona a biblioteca de ícones (para os títulos) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+{% endblock %}
+
+{% block content %}
+<main class="flex-grow-1 fade-in">
+    <div class="container content-section">
+
+        <h1 class="text-center mb-5 text-gold">
+            <i class="bi bi-book-half"></i> 
+            Nosso Cardápio
+        </h1>
+
+        <div class="row" id="cardapio-container">
+            <!-- 
+              O JavaScript 'cardapio.js' vai preencher esta área 
+              com os produtos da sua API 
+            -->
+            <div class="col-12 text-center">
+                <p class="text-muted">Carregando cardápio...</p>
+            </div>
+        </div>
+
+    </div>
+</main>
+{% endblock %}
+
+{% block scripts %}
+    <!-- Carrega o novo JS do cardápio (que vamos criar) -->
+    <script src="{{ url_for('static', filename='js/cardapio.js') }}"></script>
+    
+    <!-- Carrega o JS da Home (para a animação fade-in) -->
+    <script src="{{ url_for('static', filename='js/home.js') }}"></script>
+{% endblock %}
