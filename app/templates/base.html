@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    {% block styles %}{% endblock %}
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+    <nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-gold fs-3" href="/">La Forchetta 🍝</a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse mt-2 mt-lg-0" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == url_for('paginas.home') %}active{% endif %}"
+                            href="{{ url_for('paginas.home') }}">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == url_for('paginas.reserva_mesa_page') %}active{% endif %}"
+                            href="{{ url_for('paginas.reserva_mesa_page') }}">Reserva</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == url_for('paginas.delivery_page') %}active{% endif %}"
+                            href="{{ url_for('paginas.delivery_page') }}">Delivery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == url_for('paginas.cardapio_page') %}active{% endif %}"
+                            href="{{ url_for('paginas.cardapio_page') }}">Cardápio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == url_for('paginas.contato_page') %}active{% endif %}"
+                            href="{{ url_for('paginas.contato_page') }}">Contato</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    {% block content %}{% endblock %}
+
+    <footer class="text-center py-4 bg-dark text-light mt-auto border-top border-gold fade-in">
+        © {{ year }} <span class="text-gold">La Forchetta</span> — Todos os direitos reservados.
+    </footer>
+
+    <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+    {% block scripts %}{% endblock %}
+</body>
+
+</html>

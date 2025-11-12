@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block styles %}
+    <!-- 1. Carrega o novo CSS de contato -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/contato.css') }}">
+    
+    <!-- 2. Adiciona a biblioteca de ícones -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+{% endblock %}
+
+{% block content %}
+<main class="flex-grow-1 fade-in">
+    <div class="container content-section">
+
+        <h1 class="text-center mb-5 text-gold">
+            <i class="bi bi-person-lines-fill"></i>
+            Entre em Contato
+        </h1>
+
+        <div class="row g-5">
+
+            <!-- Coluna da Esquerda: Informações de Contato -->
+            <div class="col-lg-5">
+                <h3 class="text-gold mb-4">Nossas Informações</h3>
+                
+                <div class="info-box">
+                    <div class="info-icon"><i class="bi bi-geo-alt-fill"></i></div>
+                    <div class="info-text">
+                        <h4>Endereço</h4>
+                        <p>Rua da Cantina, 123 - Centro, Itanhaém - SP</p>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-icon"><i class="bi bi-telephone-fill"></i></div>
+                    <div class="info-text">
+                        <h4>Telefone</h4>
+                        <p>(13) 99999-8888</p>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-icon"><i class="bi bi-envelope-fill"></i></div>
+                    <div class="info-text">
+                        <h4>Email</h4>
+                        <p>contato@laforchetta.com.br</p>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-icon"><i class="bi bi-clock-fill"></i></div>
+                    <div class="info-text">
+                        <h4>Horários</h4>
+                        <p>Terça a Dom: 18:00h - 23:00h</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Coluna da Direita: Formulário -->
+            <div class="col-lg-7">
+                <h3 class="text-gold mb-4">Envie uma Mensagem</h3>
+
+                <div class="form-container">
+                    <!-- 
+                      Por enquanto, este formulário não envia (é só HTML).
+                      Podemos adicionar o JS para enviar depois, se você quiser.
+                    -->
+                    <form action="#" method="POST">
+                        <div class="mb-3">
+                            <label for="nome" class="form-label">Seu Nome</label>
+                            <input type="text" class="form-control" id="nome" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Seu Email</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="assunto" class="form-label">Assunto</label>
+                            <input type="text" class="form-control" id="assunto" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="mensagem" class="form-label">Mensagem</label>
+                            <textarea class="form-control" id="mensagem" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-gold w-100 btn-lg">Enviar Mensagem</button>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</main>
+{% endblock %}
+
+{% block scripts %}
+    <!-- Carrega o JS da Home (para a animação fade-in) -->
+    <script src="{{ url_for('static', filename='js/home.js') }}"></script>
+{% endblock %}

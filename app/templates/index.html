@@ -1,52 +1,25 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }}</title>
-
-    <link rel="stylesheet" href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+{% block styles %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-</head>
+{% endblock %}
 
-<body class="d-flex flex-column min-vh-100">
-
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
-        <div class="container">
-            <a class="navbar-brand fw-bold text-gold fs-3" href="#">La Forchetta 🍝</a>
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse mt-2 mt-lg-0" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/reserva_mesa">Reserva</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/delivery">Delivery</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Cardápio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Contato</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
+{% block content %}
     <header class="hero-section text-center text-light fade-in">
         <div class="overlay"></div>
         <div class="hero-content container">
             <h1 class="display-4 fw-bold mb-3">Bem-vindo ao <span class="text-gold">La Forchetta</span></h1>
             <p class="lead mb-4">Uma experiência italiana autêntica, feita com amor, sabor e tradição.</p>
             <div class="d-flex flex-column flex-sm-row justify-content-center gap-3">
-                <a href="/delivery" class="btn btn-gold btn-lg">Fazer Pedido Delivery</a>
-                <a href="/reserva_mesa" class="btn btn-outline-light btn-lg">Reservar Mesa</a>
+                
+                <a href="{{ url_for('paginas.delivery_page') }}" class="btn btn-gold btn-lg">Fazer Pedido Delivery</a>
+                
+                <a href="{{ url_for('paginas.reserva_mesa_page') }}" class="btn btn-outline-light btn-lg">Reservar Mesa</a>
+
             </div>
         </div>
     </header>
 
-    <!-- Sobre Nós -->
     <main class="flex-grow-1 py-5 fade-in">
         <div class="container text-center">
             <h2 class="text-gold mb-4 fw-semibold">Sobre Nós</h2>
@@ -77,15 +50,8 @@
             </div>
         </div>
     </main>
+{% endblock %}
 
-    <!-- Rodapé -->
-    <footer class="text-center py-4 bg-dark text-light mt-auto border-top border-gold fade-in">
-        © {{ year }} <span class="text-gold">La Forchetta</span> — Todos os direitos reservados.
-    </footer>
-
-    <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+{% block scripts %}
     <script src="{{ url_for('static', filename='js/home.js') }}"></script>
-</body>
-
-</html>
+{% endblock %}

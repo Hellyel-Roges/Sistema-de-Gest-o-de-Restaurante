@@ -18,3 +18,11 @@ def reserva_mesa_page():
 def delivery_page():
     produtos = Produto.query.all()
     return render_template("delivery.html", title="Delivery - La Forchetta", produtos=produtos, year=year)
+
+@paginas_bp.route('/cardapio')
+def cardapio_page():
+    return render_template("cardapio.html", title="Cardápio - La Forchetta", year=year)
+
+@paginas_bp.route('/contato')
+def contato_page():
+    return render_template("contato.html", title="Contato - La Forchetta", year=year)
