@@ -152,3 +152,108 @@ Sistema-de-Gest-o-de-Restaurante/
 <br>├── app.py
 <br>├── README.md
 <br>└── requirements.txt
+
+
+---
+
+## 🧑‍💻 Tecnologias Utilizadas
+
+### Backend
+* 🐍 **Python 3.12+**
+* **Flask** (Servidor web e roteamento)
+* **Flask-SQLAlchemy** (Mapeamento Objeto-Relacional - ORM)
+* **Jinja2** (Sistema de templates)
+
+### Frontend (IHC)
+* **HTML5**
+* **CSS3** (com Tema Escuro modularizado por página)
+* **JavaScript (ES6+)**
+* **jQuery** (Para requisições AJAX e manipulação do DOM)
+* **Bootstrap 5** (Para o sistema de grid e componentes base)
+
+### Banco de Dados
+* **SQLite** (Armazenado em `instance/database.db`)
+
+---
+
+## 🚀 Como Instalar e Executar
+
+Siga os passos abaixo para executar o projeto localmente.
+
+### 1. Pré-requisitos
+* Tenha o **Python 3.12** ou superior instalado.
+* Tenha o **Git** instalado (para clonar o repositório).
+
+### 2. Fork e Clone
+1.  **Faça um Fork** do repositório clicando no botão "Fork" no canto superior direito desta página.
+2.  **Clone** o *seu* fork para a sua máquina local:
+    ```bash
+    git clone [https://github.com/SEU-USUARIO/Sistema-de-Gest-o-de-Restaurante.git](https://github.com/SEU-USUARIO/Sistema-de-Gest-o-de-Restaurante.git)
+    cd Sistema-de-Gest-o-de-Restaurante
+    ```
+
+### 3. Criar e Ativar o Ambiente Virtual (venv)
+Um ambiente virtual (`venv`) isola as dependências do seu projeto e é uma boa prática.
+
+**No Windows (CMD ou PowerShell):**
+```bash
+# Criar o venv
+py -m venv venv
+
+# Ativar o venv
+.\venv\Scripts\activate
+```
+
+**No Linux ou Mac (Bash/Zsh):**
+```bash
+# Criar o venv
+python3 -m venv venv
+
+# Ativar o venv
+source venv/bin/activate
+```
+
+### 4. Instalar as Dependências
+Com o ambiente virtual ativo, instale todas as bibliotecas Python listadas no `requirements.txt`:
+```bash
+pip install -r requirements.txt
+```
+
+### 5. Executar a Aplicação
+O Flask irá criar o banco de dados (`database.db`) na pasta `instance/` automaticamente na primeira vez que for executado.
+# Rodar o servidor de desenvolvimento
+```bash
+py app.py
+```
+O site estará disponível no seu navegador em: http://127.0.0.1:5000
+
+---
+
+## 🚀 Objetivo Acadêmico  
+
+Este projeto foi desenvolvido para fins educacionais nas disciplinas de **Programação Orientada a Objetos e Interação Homem-Computador (IHC)**. O foco foi aplicar conceitos teóricos em um **sistema de gestão realista**, escalável e com foco na usabilidade, evoluindo de uma estrutura de POO simples para uma arquitetura de aplicação web completa.
+
+---
+
+## 🍕 Equipe de Desenvolvimento  
+
+👨‍💻 **Integrantes:**  
+- Guilherme Silva Souza
+- Gustavo Freitas Sampaio
+- Hellyel Roges dos Passos Ambrozio Pereira 
+
+📅 **Curso:** Ciência da Computação – Universidade Católica de Santos  
+📘 **Disciplina:** Programação Orientada a Objetos + Interação Homem Computador
+
+---
+
+## 💬 Contato  
+
+📧 helleyl.pereira.dev@gmail.com
+💡 Projeto acadêmico open-source – contribuições são bem-vindas!  
+
+---
+
+⭐ **Dê uma estrela se gostou do projeto!**  
+> Feito com dedicação, lógica e um toque de molho italiano 🍅
+
