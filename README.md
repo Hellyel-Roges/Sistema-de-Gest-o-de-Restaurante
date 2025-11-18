@@ -96,7 +96,7 @@ O frontend foi estruturado para ser modular, atraente e amigável:
 
 ---
 
-## <a id="estrutura"></a>🗺️ Estrutura de Pastas
+## <a id="estrutura"></a>🗂️ Estrutura de Pastas
 
 Sistema-de-Gest-o-de-Restaurante/
 <br>├── app/
