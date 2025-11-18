@@ -16,16 +16,16 @@ def criar_reserva(nome_cliente, numero_mesa, data_str, entrada_str, saida_str):
     except:
         return {"status": "erro", "mensagem": "Formato de data ou horário inválido."}
 
-    # 🔥 Regra: não permitir horários invertidos
+    #  Regra: não permitir horários invertidos
     if horario_entrada >= horario_saida:
         return {"status": "erro", "mensagem": "Horário de saída deve ser depois da entrada."}
 
-    # 🔥 Regra: não pode reservar no passado
+    #  Regra: não pode reservar no passado
     agora = datetime.now()
     if horario_saida <= agora:
         return {"status": "erro", "mensagem": "Não é possível fazer reservas para horários ou dias passados."}
 
-    # 🔥 Regra: intervalo permitido (11h às 23h)
+    #  Regra: intervalo permitido (11h às 23h)
     if not (11 <= horario_entrada.hour < 23) or not (11 < horario_saida.hour <= 23):
         return {"status": "erro", "mensagem": "Horário permitido para reservas: das 11:00 às 23:00."}
 
@@ -41,7 +41,7 @@ def criar_reserva(nome_cliente, numero_mesa, data_str, entrada_str, saida_str):
         db.session.add(cliente)
         db.session.commit()
 
-    # 🔥 Verificar conflito de horário
+    #  Verificar conflito de horário
     conflito = ReservaMesa.query.filter(
         ReservaMesa.mesa_id == mesa.id,
         ReservaMesa.horario_de_entrada < horario_saida,
@@ -51,7 +51,7 @@ def criar_reserva(nome_cliente, numero_mesa, data_str, entrada_str, saida_str):
     if conflito:
         return {"status": "erro", "mensagem": f"Mesa {numero_mesa} já reservada neste horário."}
 
-    # ✅ Criar reserva
+    #  Criar reserva
     reserva = ReservaMesa(
         numero_mesa=numero_mesa,
         mesa_id=mesa.id,
