@@ -18,20 +18,20 @@
 
 ## 📍 Índice
 
-* [Sobre o Projeto](#🧩-sobre-o-projeto)
-* [Funcionalidades](#🍽️-funcionalidades)
-* [Arquitetura da Aplicação](#🏛️-arquitetura-da-aplicação)
-* [Frontend & IHC](#🎨-frontend--ihc-interação-homem-computador)
-* [Estrutura de Pastas](#🗺️-estrutura-de-pastas)
-* [Tecnologias Utilizadas](#🧑‍💻-tecnologias-utilizadas)
-* [Como Instalar e Executar](#🚀-como-instalar-e-executar)
-* [Objetivo Acadêmico](#🎓-objetivo-acadêmico)
-* [Equipe](#🍕-equipe-de-desenvolvimento)
-* [Contato](#💬-contato)
+* [Sobre o Projeto](#sobre)
+* [Funcionalidades](#funcionalidades)
+* [Arquitetura da Aplicação](#arquitetura)
+* [Frontend & IHC](#frontend)
+* [Estrutura de Pastas](#estrutura)
+* [Tecnologias Utilizadas](#tecnologias)
+* [Como Instalar e Executar](#instalacao)
+* [Objetivo Acadêmico](#objetivo)
+* [Equipe](#equipe)
+* [Contato](#contato)
 
 ---
 
-## 🧩 Sobre o Projeto
+## <a id="sobre"></a>🧩 Sobre o Projeto
 
 **La Forchetta** é um sistema web *full-stack* para gestão de restaurante, desenvolvido em **Python** com o framework **Flask**. O projeto simula o funcionamento completo de um restaurante de massas italianas, integrando o atendimento presencial (reservas) e o serviço de delivery.
 
@@ -41,30 +41,31 @@ O que começou como um projeto acadêmico focado em POO (Programação Orientada
 2.  **Services:** Módulos Python que contêm toda a "lógica de negócios" (o "cérebro").
 3.  **Routes (Controllers):** Endpoints Flask que conectam o frontend às lógicas de *Services* e *Models*.
 
-O frontend foi desenvolvido com foco total em **IHC (Interação Homem-Computador)**, garantindo uma interface limpa, responsiva, com tema escuro consistente e interatividade dinâmica usando JavaScript e AJAX.
+O frontend foi desenvolvido com foco total em **IHC (Interação Homem-Computador)**, garantindo uma interface limpa, responsiva, com tema escuro consistente e interatividade dinâmica usando JavaScript(JQuery) e AJAX.
 
 ---
 
-## 🍽️ Funcionalidades
+## <a id="funcionalidades"></a>🍽️ Funcionalidades
 
 ### 🔸 Requisitos Gerais
-* 📦 **Controle de Estoque de Alimentos e Materiais**
 * 💳 **Sistema de Formas de Pagamento**
 * 📜 **Gerenciamento de Cardápio (Pratos, Bebidas, Sobremesas)**
 * 👤 **Sistema de Clientes**
+* 🍝 **Sistema de Produtos**
 
 ### 🏛️ Presencial
 * 🪑 **Reserva de Mesas** (com formulário dinâmico via AJAX)
-* 🚗 **Gerenciamento de Estacionamento**
+* 🚗 **Gerenciamento de Estacionamento por Cliente**
 * 🎫 **Controle de Catraca para Entrada e Saída de Clientes**
 
 ### 🚚 Delivery
-* 🛵 **Gestão de Veículos de Entrega**
+* 🛵 **Gestão de Entrega**
 * 🧾 **Criação e Rastreamento de Pedidos Online** (com carrinho de compras interativo via AJAX)
+* ✉️ **Contato para Suporte e duvidas**
 
 ---
 
-## 🏛️ Arquitetura da Aplicação
+## <a id="arquitetura"></a>🏛️ Arquitetura da Aplicação
 
 O backend é organizado em três camadas claras para garantir a separação de responsabilidades (Separation of Concerns).
 
@@ -83,22 +84,22 @@ O backend é organizado em três camadas claras para garantir a separação de r
 
 ---
 
-## 🎨 Frontend & IHC (Interação Homem-Computador)
+## <a id="frontend"></a>🎨 Frontend & IHC (Interação Homem-Computador)
 
 O frontend foi estruturado para ser modular, atraente e amigável:
 
 * **Herança de Templates:** Um `base.html` centraliza o `navbar` e o `footer`, garantindo consistência visual e fácil manutenção em todas as páginas.
-* **Dinamismo (AJAX):** As páginas de Reserva e Delivery usam JavaScript para se comunicar com as APIs do Flask sem recarregar a página, criando uma experiência de usuário fluida.
+* **Dinamismo (AJAX):** As páginas de Reserva e Delivery usam JavaScript(jquery) para se comunicar com as APIs do Flask sem recarregar a página, criando uma experiência de usuário fluida.
 * **CSS Modular:** Cada página carrega um CSS específico (ex: `delivery.css`) que herda as variáveis de tema do `home.css`, mantendo o tema escuro (preto e dourado) consistente.
 * **Anti-FOUC:** O `home.js` aplica uma animação `.fade-in` (via CSS) para evitar o "flash de conteúdo não estilizado", melhorando a percepção visual do usuário.
 * **Acessibilidade:** Ícones decorativos e emojis são escondidos de leitores de tela com `aria-hidden="true"` para uma navegação mais limpa e direta.
 
 ---
 
-## 🗺️ Estrutura de Pastas
-Sistema-de-Gest-o-de-Restaurante/
+## <a id="estrutura"></a>🗺️ Estrutura de Pastas
 
-├── app/
+Sistema-de-Gest-o-de-Restaurante/
+<br>├── app/
 <br>│   ├── models/
 <br>│   │   ├── cliente.py
 <br>│   │   ├── database.py
@@ -156,7 +157,7 @@ Sistema-de-Gest-o-de-Restaurante/
 
 ---
 
-## 🧑‍💻 Tecnologias Utilizadas
+## <a id="tecnologias"></a>🧑‍💻 Tecnologias Utilizadas
 
 ### Backend
 * 🐍 **Python 3.12+**
@@ -176,7 +177,7 @@ Sistema-de-Gest-o-de-Restaurante/
 
 ---
 
-## 🚀 Como Instalar e Executar
+## <a id="instalacao"></a>🚀 Como Instalar e Executar
 
 Siga os passos abaixo para executar o projeto localmente.
 
@@ -186,9 +187,12 @@ Siga os passos abaixo para executar o projeto localmente.
 
 ### 2. Fork e Clone
 1.  **Faça um Fork** do repositório clicando no botão "Fork" no canto superior direito desta página.
-2.  **Clone** o *seu* fork para a sua máquina local:
+2.  Vá para o **seu** perfil no GitHub, abra o Fork que você acabou de criar e copie a URL (botão verde "Code").
+3.  Clone para sua máquina:
     ```bash
-    git clone [https://github.com/SEU-USUARIO/Sistema-de-Gest-o-de-Restaurante.git](https://github.com/SEU-USUARIO/Sistema-de-Gest-o-de-Restaurante.git)
+    # Substitua a URL abaixo pela que você copiou do seu Fork
+    git clone https://github.com/SEU-USUARIO/Sistema-de-Gest-o-de-Restaurante.git
+    
     cd Sistema-de-Gest-o-de-Restaurante
     ```
 
@@ -229,13 +233,13 @@ O site estará disponível no seu navegador em: http://127.0.0.1:5000
 
 ---
 
-## 🚀 Objetivo Acadêmico  
+## <a id="objetivo"></a>🎓 Objetivo Acadêmico
 
 Este projeto foi desenvolvido para fins educacionais nas disciplinas de **Programação Orientada a Objetos e Interação Homem-Computador (IHC)**. O foco foi aplicar conceitos teóricos em um **sistema de gestão realista**, escalável e com foco na usabilidade, evoluindo de uma estrutura de POO simples para uma arquitetura de aplicação web completa.
 
 ---
 
-## 🍕 Equipe de Desenvolvimento  
+## <a id="equipe"></a>🍕 Equipe de Desenvolvimento
 
 👨‍💻 **Integrantes:**  
 - Guilherme Silva Souza
@@ -247,7 +251,7 @@ Este projeto foi desenvolvido para fins educacionais nas disciplinas de **Progra
 
 ---
 
-## 💬 Contato  
+## <a id="contato"></a>💬 Contato
 
 📧 helleyl.pereira.dev@gmail.com
 💡 Projeto acadêmico open-source – contribuições são bem-vindas!  
